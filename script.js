@@ -14,16 +14,13 @@ function DoneUndone() {
 }
 
 function Erasetask(){
-	let eraseButton = document.querySelectorAll("button.erase");
-	//let parentButton = document.getElementsByTagName("ul");
-	for (let i = 0; i < eraseButton.length; i++) {
+	let myList = document.getElementsByTagName("ul");
+	let button = document.querySelectorAll("button.erase");
+	let length = document.getElementsByClassName("erase");
+	for (let i = 0; i < length; i++) {
 		//const button = eraseButton[i];
-		// const previousSibling = element.previousSibling;
 		button.addEventListener('click', function () {
-			//previousSibling.remove();
-			//element.remove();
-			//ul.removeChild(ul.childNodes[i]);
-			eraseButton[i].parentNode.removeChild(eraseButton[i]);
+			myList.removeChild(myList.children[i]);
 		})
 	}
 }
