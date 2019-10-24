@@ -2,22 +2,18 @@ var button = document.getElementById("enter");
 var input = document.getElementById("userinput");
 var ul = document.querySelector("ul");
 
+// Loop li elements using forEach
 function CheckUncheck () {
-
 	let list = document.querySelectorAll("li");
-
-	list.forEach(listElement => {
-		listElement.addEventListener('click', function(){
-			 listElement.classList.toggle("done");
-		})
-	})
+	list.forEach( listElement => listElement.addEventListener('click', Strike))
 }
 
-function UpdateListItems (list){
-	CheckUncheck(list);
-	Erasetask();
+// Reference https://developer.mozilla.org/en-US/docs/Web/API/Event/target 
+function Strike (e) {
+	e.target.classList.toggle("done");
 }
 
+//Erase Button
 function Erasetask() {
 	let button = document.querySelectorAll("button.erase");
 	for (let i = 0; i < button.length; i++) {
@@ -42,7 +38,8 @@ function createListElement() {
 	li.appendChild(button);
 	li.classList.add("uncheck");
 	input.value = "";
-	UpdateListItems();
+	CheckUncheck();
+	Erasetask();
 }
 
 function addListAfterClick() {
@@ -59,6 +56,7 @@ function addListAfterKeypress(event) {
 
 button.addEventListener("click", addListAfterClick);
 input.addEventListener("keypress", addListAfterKeypress);
-UpdateListItems();
+CheckUncheck();
+Erasetask();
 
 
