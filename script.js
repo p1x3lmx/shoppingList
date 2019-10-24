@@ -2,7 +2,7 @@ var button = document.getElementById("enter");
 var input = document.getElementById("userinput");
 var ul = document.querySelector("ul");
 
-// Loop li elements using forEach
+// Loop over li elements susing forEach
 function CheckUncheck () {
 	let list = document.querySelectorAll("li");
 	list.forEach( listElement => listElement.addEventListener('click', Strike))
@@ -54,9 +54,19 @@ function addListAfterKeypress(event) {
 	}
 }
 
+//Clean Shopping List Instead Ereasing 1by1
+function EraseAll () {
+	let button = document.getElementById("eraseall");
+	button.addEventListener('click', function(){
+		let li = document.querySelectorAll("li");
+		li.forEach( listElement => listElement.remove());
+	});
+}
+
 button.addEventListener("click", addListAfterClick);
 input.addEventListener("keypress", addListAfterKeypress);
 CheckUncheck();
 Erasetask();
+EraseAll();
 
 
